@@ -1,0 +1,7 @@
+{
+  "name": "catalogoApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
