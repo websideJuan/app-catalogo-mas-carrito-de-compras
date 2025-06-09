@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/catalogo"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Detalle del Producto
+    </ion-title>
+    <ion-item lines="none" slot="end">
+      <app-cart-button></app-cart-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="producto">
+  <img
+    [src]="producto.imagen"
+    alt="{{ producto.nombre }}"
+    style="width: 100%; border-radius: 12px"
+  />
+  <h2>Nombre: {{ producto.nombre }}</h2>
+  <p>Descripcion: {{ producto.descripcion }}</p>
+  <h3>Precio: ${{ producto.precio }}</h3>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" class="ion-no-padding">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>
+              Entrega rápida y segura
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content> 
+            Tu pedido llegará en menos de 24 horas.
+          </ion-card-content>
+        </ion-card>
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Detalles del Producto</ion-label>
+          </ion-item-divider>
+          <ion-item>
+            <ion-label>Precio:</ion-label>
+            <ion-note slot="end">${{ producto.precio }}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label>Disponibilidad:</ion-label>
+            <ion-note slot="end"
+              >{{ producto.disponibilidad ? 'Disponible' : 'No disponible'
+              }}</ion-note
+            >
+          </ion-item>
+          <ion-item>
+            <ion-label>Categoría:</ion-label>
+            <ion-note slot="end">{{ producto.categoria }}</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label>Valoración:</ion-label>
+            <ion-note slot="end">{{ producto.valoracion }} estrellas</ion-note>
+          </ion-item>
+        </ion-item-group>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer class="ion-no-border ion-padding">
+  
+  <ion-button #btnAgregar expand="full" (click)="agregarAlCarrito()">
+    <ion-icon slot="start" name="cart-outline"></ion-icon>
+    Agregar al carrito
+  </ion-button>
+
+</ion-footer>

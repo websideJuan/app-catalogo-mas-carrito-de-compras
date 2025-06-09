@@ -1,0 +1,53 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <ion-grid class="ion-padding myTestClass">
+    <ion-row>
+      <ion-input
+        label="Usuario o Email"
+        labelPlacement="floating"
+        placeholder="Example123"
+        type="text"
+        autocapitalize="off"
+        autocorrect="off"
+        spellcheck="false"
+        inputmode="text"
+        autocomplete="username"
+        formControlName="username"
+        autofocus="true"
+      ></ion-input>
+    </ion-row>
+    <ion-row>
+      <ion-input
+        label="Contraseña"
+        labelPlacement="floating"
+        placeholder="*******"
+        type="password"
+        autocapitalize="off"
+        autocorrect="off"
+        spellcheck="false"
+        inputmode="text"
+        autocomplete="current-password"
+        formControlName="password"
+        minlength="6"
+        maxlength="20"
+        required
+      ></ion-input>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-end">
+        <ion-button expand="full" color="primary" type="submit" [disabled]="loginForm.invalid">Entrar</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-text-smart">
+      <ion-col class="ion-text-center">
+        <ion-text>¿Olvidaste tu contraseña?</ion-text>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <ion-text>¿No tienes cuenta?</ion-text>
+        <ion-button size="small">Regístrate</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
