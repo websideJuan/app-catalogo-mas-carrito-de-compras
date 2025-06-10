@@ -6,13 +6,15 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { ShareButtonModule } from '../shared/shareButton.module';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,  
     HomePageRoutingModule,
-    SharedModule
+    SharedModule,
+    ShareButtonModule
   ],
   declarations: [HomePage],
   exports: [HomePage],

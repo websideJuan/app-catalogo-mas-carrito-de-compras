@@ -1,8 +1,59 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Home</ion-title>
+    <ion-title slot="start">Home</ion-title>
+    <app-cart-button slot="end"></app-cart-button>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar></ion-searchbar>
   </ion-toolbar>
 </ion-header>
+<ion-content [fullscreen]="true" color="light">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Bienvenido a nuestra tienda</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Explora nuestros productos y ofertas especiales.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-title>Productos Destacados</ion-title>
+        <ion-card>
+          <ion-card-content>
+            <img src="assets/imagenesCatalogo/play-station-5.jpg" alt="Producto Destacado" style="width: 100%; height: auto;">
+            <p>Descripción breve del producto destacado.</p>
+            <ion-button expand="full" color="primary">Ver Producto</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="6" size-lg="4">
+        <ion-title>Ofertas Especiales</ion-title>
+        <ion-card>
+          <ion-card-content>
+            <img src="assets/imagenesCatalogo/audifonos_inalambricos.jpg" alt="Oferta Especial" style="width: 100%; height: auto;">
+            <p>Descripción breve de la oferta especial.</p>
+            <ion-button expand="full" color="secondary">Ver Oferta</ion-button>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-content>    
 
 <ion-footer>
   <ion-toolbar>

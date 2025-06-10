@@ -1,15 +1,18 @@
-<ion-button
-  fill="clear"
-  size="large"
-  (click)="navegarACarrito()"
->
-  <ion-icon slot="start" name="cart"></ion-icon>
+
+  <ion-button
+    fill="clear"
+    (click)="navegarACarrito()"
+  >
+  <ion-icon
+    name="cart-outline"
+    slot="icon-only"
+  ></ion-icon>
   <ion-badge
-    *ngIf="itemsOfCart > 0"
-    color="danger"
-    class="badge"
-    [ngClass]="{'badge-hidden': itemsOfCart === 0}"
-    >{{ itemsOfCart }}</ion-badge
+  *ngIf="itemsOfCart > 0"
+  color="danger"
+  class="badge"
+  [ngClass]="{'badge-hidden': itemsOfCart === 0}"
+  >{{ itemsOfCart }}</ion-badge
   >
   
 </ion-button>
