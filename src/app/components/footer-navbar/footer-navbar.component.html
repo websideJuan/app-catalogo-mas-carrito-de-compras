@@ -1,11 +1,13 @@
 <ion-grid>
   <ion-row size="12" class="ion-justify-content-center ion-align-items-center">
     <ion-col *ngFor="let nabarItem of nabarItems" class="ion-text-center" size="2.4">
-      <ion-button (click)="navigateTo(nabarItem.url)" fill="clear" class="ion-text-center">
-        <ion-icon [name]="nabarItem.icon" size="small"></ion-icon>
+      <ion-button (click)="navigateTo(nabarItem.url)" fill="clear" class="ion-text-center" [disabled]="!nabarItem.isFinite">
+        <ion-icon [name]="nabarItem.icon" style="font-size: 1.3rem;"></ion-icon>
       </ion-button>
       
-      {{ nabarItem.label }}
+      <div class="ion-text-center" style="font-size: 0.7rem;">
+        {{ nabarItem.label }}
+      </div>
       
     </ion-col> 
   </ion-row>

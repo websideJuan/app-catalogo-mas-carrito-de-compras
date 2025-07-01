@@ -14,13 +14,13 @@
 
 <ion-content class="ion-padding" *ngIf="producto" color="light">
   <img
-    [src]="producto.imagen"
-    alt="{{ producto.nombre }}"
+    [src]="producto.image"
+    alt="{{ producto.title }}"
     style="width: 100%; border-radius: 12px"
   />
-  <h2>Nombre: {{ producto.nombre }}</h2>
-  <p>Descripcion: {{ producto.descripcion }}</p>
-  <h3>Precio: ${{ producto.precio }}</h3>
+  <h2>Nombre: {{ producto.title }}</h2>
+  <p>Descripcion: {{ producto.description }}</p>
+  <h3>Precio: ${{ producto.price }}</h3>
 
   <ion-grid>
     <ion-row>
@@ -41,7 +41,7 @@
           </ion-item-divider>
           <ion-item>
             <ion-label>Precio:</ion-label>
-            <ion-note slot="end">${{ producto.precio }}</ion-note>
+            <ion-note slot="end">${{ producto.price }}</ion-note>
           </ion-item>
           <ion-item>
             <ion-label>Disponibilidad:</ion-label>
@@ -52,11 +52,15 @@
           </ion-item>
           <ion-item>
             <ion-label>Categoría:</ion-label>
-            <ion-note slot="end">{{ producto.categoria }}</ion-note>
+            <ion-note slot="end">{{ producto.category }}</ion-note>
           </ion-item>
           <ion-item>
             <ion-label>Valoración:</ion-label>
-            <ion-note slot="end">{{ producto.valoracion }} estrellas</ion-note>
+            <ion-note slot="end">{{ producto.rating.rate }} ⭐</ion-note>
+          </ion-item>
+          <ion-item>
+            <ion-label>Comentarios:</ion-label>
+            <ion-note slot="end">{{ producto.rating.count }} comentarios</ion-note>
           </ion-item>
         </ion-item-group>
       </ion-col>

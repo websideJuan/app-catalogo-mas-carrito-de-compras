@@ -35,6 +35,16 @@ const routes: Routes = [
     loadChildren: () => import('./carrito-compras/carrito-compras.module').then( m => m.CarritoComprasPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'cuenta',
+    loadChildren: () => import('./cuenta/cuenta.module').then( m => m.CuentaPageModule),
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'favorite',
+    loadChildren: () => import('./favorite/favorite.module').then( m => m.FavoritePageModule),
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

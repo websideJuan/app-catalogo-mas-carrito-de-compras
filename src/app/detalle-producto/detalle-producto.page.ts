@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarritoService } from '../servicios/carrito.service'; 
 import { createAnimation } from '@ionic/angular';
-import { CartButtonComponent } from '../components/cart-button/cart-button.component';
+import { ProductosService } from '../servicios/productos.service';
 
 @Component({
   selector: 'app-detalle-producto',
@@ -11,45 +11,38 @@ import { CartButtonComponent } from '../components/cart-button/cart-button.compo
   standalone: false
 })
 export class DetalleProductoPage implements OnInit {
-  producto: any;
 
-  productos = [
-    {
-      id: 1,
-      nombre: 'Producto 1',
-      descripcion: 'Descripción del Producto 1',
-      precio: 100,
-      imagen: '/assets/imagenesCatalogo/audifonos_inalambricos.jpg'
-    },
-    {
-      id: 2,
-      nombre: 'Producto 2',
-      descripcion: 'Descripción del Producto 2',
-      precio: 200,
-      imagen: './assets/imagenesCatalogo/sin-bg-smartwatch.jpg'
-    },
-    {
-      id: 3,
-      nombre: 'Producto 3',
-      descripcion: 'Descripción del Producto 3',
-      precio: 300,
-      imagen: '/assets/imagenesCatalogo/play-station-5.jpg'
-    }
-  ];
+  productos: any[] = [];
+
+  producto: any | null = null;
 
   @ViewChild('btnAgregar', { read: ElementRef }) btnAgregar!: ElementRef;
 
 
 
-  constructor(private router: ActivatedRoute, private carritoService: CarritoService, private roter: Router) { }
+  constructor(private router: ActivatedRoute, private carritoService: CarritoService, private roter: Router, private productosService: ProductosService) { }
 
   ngOnInit() {
-    const id = this.router.snapshot.paramMap.get('id');
-    if (id) {
-      this.producto = this.productos.find(p => p.id === parseInt(id, 10));
-    } else {
-      this.producto = null;
-    }
+    // Cargar los productos desde el servicio
+    this.productosService.getProductos().subscribe({
+      next: (productos) => {
+        this.productos = productos;
+        console.log('Productos cargados:', this.productos);
+      },
+      error: (error) => {
+        console.error('Error al cargar los productos', error);
+      },
+      complete: () => {
+        console.log('Carga de productos completada');
+        const id = this.router.snapshot.paramMap.get('id');
+        if (id) {
+          this.producto = this.productos.find(p => p.id === parseInt(id, 10));
+        } else {
+          this.producto = null;
+        }
+      }
+    });
+    
   }
 
   irAlCarrito() {
@@ -72,6 +65,7 @@ export class DetalleProductoPage implements OnInit {
     animation.play();
 
     if (this.producto) {
+      this.producto.cantidad = 1; 
       this.carritoService.agregarProducto(this.producto);
       console.log('Producto agregado al carrito:', this.producto);
     } else {

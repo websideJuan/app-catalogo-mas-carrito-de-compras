@@ -9,11 +9,11 @@ import { Router } from '@angular/router';
 })
 export class FooterNavbarComponent  implements OnInit {
   nabarItems = [
-    { icon: 'home-outline', label: 'Inicio', url: '/home' },
-    { icon: 'grid-outline', label: 'Catalogo', url: '/catalogo' },
-    { icon: 'person-outline', label: 'Cuenta', url: '/mi-cuenta' },
-    { icon: 'heart-outline', label: 'Favorito', url: '/favoritos' },
-    { icon: 'add-outline', label: 'Más', url: '/mas' }
+    { icon: 'home-outline', label: 'Inicio', url: '/home', isFinite: true },
+    { icon: 'grid-outline', label: 'Catalogo', url: '/catalogo', isFinite: true },
+    { icon: 'person-outline', label: 'Cuenta', url: '/cuenta', isFinite: true },
+    { icon: 'heart-outline', label: 'Favorito', url: '/favorite', isFinite: true },
+    { icon: 'add-outline', label: 'Más', url: '/mas', isFinite: false },
   ];
 
   constructor(private Router: Router) { }

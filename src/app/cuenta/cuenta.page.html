@@ -1,0 +1,47 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Bienvenido, {{ usuario }}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            Aquí puedes gestionar tu cuenta y ver tus pedidos.
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-list>
+    <ion-item button routerLink="/mis-pedidos">
+      <ion-icon slot="start" name="list-outline"></ion-icon>
+      Mis Pedidos
+    </ion-item>
+    <ion-item button routerLink="/mis-favoritos">
+      <ion-icon slot="start" name="heart-outline"></ion-icon>
+      Mis Favoritos
+    </ion-item>
+    <ion-item button routerLink="/ajustes">
+      <ion-icon slot="start" name="settings-outline"></ion-icon>
+      Ajustes
+    </ion-item>
+    <ion-item button (click)="logout()">
+      <ion-icon slot="start" name="log-out-outline"></ion-icon>
+      Cerrar Sesión
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <app-footer-navbar></app-footer-navbar>
+  </ion-toolbar>
+</ion-footer>

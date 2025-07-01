@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { StorageService } from '../../storage.service'
 @Component({
   selector: 'app-form-component',
   templateUrl: './form-component.component.html',
@@ -14,10 +14,7 @@ export class FormComponentComponent  implements OnInit {
     psw: 123456
   };
 
-  constructor(private fb: FormBuilder,private router: Router) { }
-
-
-
+  constructor(private fb: FormBuilder,private router: Router, private storage: StorageService) { }
   ngOnInit() {
     this.loginForm = this.fb.group({
       username: [''],
@@ -46,10 +43,8 @@ export class FormComponentComponent  implements OnInit {
     };
 
     // create a local storage item with the username and password
-    sessionStorage.setItem('isLoggedIn', JSON.stringify({
-      username: this.loginForm.value.username,
-      password: this.loginForm.value.password
-    }))
+    
+    this.storage.setItem(this.loginForm.value.username, this.loginForm.value.password);
 
     // Navigate to the home page with the provided username and password
     this.router.navigate(['/home'], navigationExtras);
