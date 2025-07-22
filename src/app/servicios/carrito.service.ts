@@ -7,6 +7,7 @@ export class CarritoService {
   private productos: any[] = [];
   private total: number = 0;
   private cantidad: number = 0;
+  private tasaDeCambio: number = 963; 
 
   agregarProducto(producto: any) {
     // Verificar si el producto ya está en el carrito
@@ -14,7 +15,7 @@ export class CarritoService {
     if (index > -1) {
       // Si ya está en el carrito, incrementamos la cantidad
       this.productos[index].cantidad += 1;
-      this.total += producto.price; // Asumiendo que el precio es un número
+      this.total += (producto.price * this.tasaDeCambio); // actualizar el total cambiando la tasa de cambio
       return;
     }
     // Si no está en el carrito, lo agregamos

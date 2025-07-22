@@ -12,12 +12,12 @@
     <ion-row>
       <ion-col size="12" size-md="6" *ngFor="let producto of productos" #productoItem>
         <ion-card (click)="verDetalles(producto.id)">
-          <img [src]="producto.image" width="100%" alt="{{ producto.nombre }}" />
+          <img [src]="producto.image" width="100%" alt="{{ producto.nombre }}" class="producto-imagen" />
           <ion-card-header>
             <ion-card-title>{{ producto.title }}</ion-card-title>
-            <ion-card-subtitle>${{ producto.price }}</ion-card-subtitle>
+            <ion-card-subtitle style="font-size: large;">{{ producto.price | currency }}</ion-card-subtitle>
           </ion-card-header>
-          <ion-card-content> {{ producto.description }} </ion-card-content>
+          <ion-card-content> {{ producto.description | slice:0:100 }} </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>

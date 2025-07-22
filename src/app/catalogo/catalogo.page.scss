@@ -3,3 +3,12 @@ ion-icon {
   color: var(--ion-color-primary);
   margin-bottom: .5rem;
 }
+
+.producto-imagen {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  aspect-ratio: 1 / 1;
+}
